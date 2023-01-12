@@ -136,7 +136,7 @@ $ git switch -c <브랜치 이름> <커밋 ID>
 
 ### i. 작업 흐름
 - 소유권이 없는 원격 저장소를 `fork` 를 통해 내 원격 저장소로 `복제` 한다.
-    ![fork](fork.png)
+    ![fork](image/fork.png)
 - `fork` 후, 복제된 내 원격 저장소를 로컬 저장소에 `clone` 받는다.
     ```bash
     $ git clone https://github.com/leeyonghee1017/kakao_clone.git
