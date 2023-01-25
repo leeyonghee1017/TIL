@@ -1,0 +1,90 @@
+#content {
+    border: 0px solid black;
+    width:100%;
+
+}
+
+#content>.section1{
+    border: 0px solid blue;
+    width:100%;
+    height: 405px;
+}
+
+#content .slide_banner,
+#content .side_banner
+{
+    border:1px solid #CCCCCC;    
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    float: left;
+    width:49.8%;
+}
+
+#content .slide_banner{
+    width: 70%;
+    margin-left: 20px;
+}
+
+#content .side_banner{
+    width: 27%;
+    margin-left: 2px;
+    margin-right: 10px;
+}
+
+#content>.section2{
+    border: 0px solid blue;
+    height: 605px;
+}
+
+#content>.section2>.hit_product{
+    border: 0px solid red;
+    width: 100%;
+    height: 300px;
+}
+
+#content>.section2>.hit_product>ul{
+    width: 100%;
+    border : 0px solid black;
+}
+
+#content>.section2>.hit_product li{
+    width: 23%;
+    text-align: center;
+    height: 290px;
+    line-height: 290px;
+    float: left;
+    margin-top: 2px;
+    margin-left: 2px;
+    border:1px solid yellow;
+}
+
+#content>.section2>.hit_product li:nth-child(1){
+    margin-left: 40px;
+}
+
+#content>.section2>.md_product{
+    border:0px solid green;
+    width:100%;
+    height: 300px;
+}
+
+#content>.section2>.md_product>ul{
+    width: 100%;
+    border : 0px solid black;
+}
+
+#content>.section2>.md_product li{
+    width: 23%;
+    text-align: center;
+    height: 290px;
+    line-height: 290px;
+    float: left;
+    margin-top: 2px;
+    margin-left: 2px;
+    border:1px solid yellow;
+}
+
+#content>.section2>.md_product li:nth-child(1){
+    margin-left: 40px;
+}
