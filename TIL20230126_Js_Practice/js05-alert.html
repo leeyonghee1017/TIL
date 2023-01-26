@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function alertFunc(){
+            alert('내용 출력!(단순 대화창)')
+        }
+
+        function confirmFunc(){
+            if(confirm('배경색을 변환할까요?')){
+                alert('파랑색으로 변환합니다.')
+                document.body.style.backgroundColor = 'skyblue'
+            }
+            else{
+                alert('배경을 없앱니다.')
+                document.body.style.backgroundColor = 'white'
+            }
+        }
+
+        function promptFunc(){
+            let txt = prompt('좋아하는 과목을 선택해 주세요\n[1:python / 2:html / 3:css / 4:javascript]')
+            switch(txt){
+                case '1':
+                    alert('파이썬을 선택했습니다.')
+                    break
+                case '2':
+                    alert('에이치티엠엘을 선택했습니다.')
+                    break
+                case '3':
+                    alert('씨에스에스을 선택했습니다.')
+                    break
+                case '4':
+                    alert('자바스크립트을 선택했습니다.')
+                    break
+                case null:
+                    alert('취소했습니다.')
+                    break  
+                default:
+                    alert('정확한 숫자를 입력해주세요.')
+                    break              
+            }
+        }
+
+        function promptFunc01(){
+            let age = prompt('나이를 입력해주세요.')
+            if(!isNaN(age))
+            {
+                alert('내년 나이는 ' + (parseInt(age) + 1))
+                alert('내 후년 나이는 ' + (parseInt(age) + 2))
+            }
+            else{
+                alert('숫자를 입력해주세요.')
+            }            
+        }
+
+        function promptFunc02(){
+            let i = prompt('사각형의 가로 길이를 입력해주세요.')
+            let j = prompt('사각형의 세로 길이를 입력해주세요.')
+            if(!isNaN(i) && !isNaN(j))
+            {
+                alert('사각형의 면적은 ' + (parseInt(i) * parseInt(j)) + "입니다.")
+            }
+            else{
+                alert('숫자를 입력해주세요.')
+            }
+            
+        }
+
+        function nomalFun(){
+            console.log('nomalFunc....')
+        }
+        nomalFun()
+        new nomalFun()
+
+        var arrowFun = () =>{
+            console.log('arrowFunc....')
+        }
+
+        arrowFun()
+
+        var test = () => console.log('test실행됨')
+        test()
+    </script>
+</head>
+<body>
+    <h1>window 객체의 대화형 메소드</h1>
+    <p>alert() : 경고, 코드 디버깅 (return 값 없음)
+        <button onclick="alertFunc()">확인</button>
+    </p>
+
+    <p>confirm() : 확인 / 취소 (return : true / false)
+        <button onclick="confirmFunc()">확인</button>
+    </p>
+
+    <p>prompt() : 텍스트 박스, 확인 / 취소 (return : 텍스트('') / null)
+        <button onclick="promptFunc()">확인</button>
+    </p>
+
+    <p> 나이를 입력해주세요.
+        <button onclick="promptFunc01()">확인</button>
+    </p>
+
+    <p> 사각형 그리기
+        <button onclick="promptFunc02()">확인</button>
+    </p>
+</body>
+</html>
