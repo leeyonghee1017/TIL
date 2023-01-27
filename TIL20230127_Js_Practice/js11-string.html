@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function strTest01(){
+            let str01 = 'string'
+            let str02 = 'test'
+
+            console.log(str01 + str02)
+
+            let newString = str01.concat(str02,'java','Script')
+            console.log(newString)
+
+            let joinTest = ['a','b','c','d'].join('-')
+            alert(joinTest)
+        }
+
+        function strTest02(){
+            let a=1
+            let b=2.3
+            let c=true
+            let str='aaa'
+            let result = a+b+c+str
+
+            alert(result)
+        }
+
+        function strTest03(){
+            let str = prompt('이름을 입력해주세요')
+            let span = document.getElementById('res')
+            if(str =='멀캠'){
+                span.innerHTML = '<b>'+str+'님 환영합니다.'
+            }else if(str.toLowerCase()=='multicampus'){
+                span.innerHTML = '<b>hello</b> '+str.toLowerCase()
+            }else{
+                span.innerHTML='다시 확인해주세요'
+            }
+        }
+
+        let numVal = 10
+        if(numVal == '10'){
+            alert('== 연산자 사용 : 숫자 10 == 문자 10')
+        }
+
+        if(numVal === '10'){
+            
+        }else{
+            alert('=== 연산자 사용 : 숫자 10 !== 문자 10')
+        }
+    </script>
+</head>
+<body>
+    <p>문자열합치기
+        <button onclick="strTest01()">확인</button>
+    </p>
+    <p>다른 자료형 합치기
+        <button onclick="strTest02()">확인</button>
+    </p>
+    <p>문자열 비교하기
+        <button onclick="strTest03()">확인</button>
+    </p>
+    <span id="res"></span>
+</body>
+</html>
