@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width:30px;
+            height: 20px;
+            text-align: center;
+
+        }
+
+        button {
+            margin-left: 10px;
+        }
+
+        table{
+            width: 300px;
+        }
+        table, td{
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        td{
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function drawTable(){
+            let contents = document.getElementById('contents')
+            if(contents.children[0]!=null){
+                contents.removeChild(contents.children[0])
+            }            
+            let rCount = document.getElementById('rCount').value
+            let cCount = document.getElementById('cCount').value
+            let table = document.createElement('table')  
+
+            for(let j =0; j<Number(rCount);j++){  
+                let tr = document.createElement('tr')              
+                for(let i = 0; i < Number(cCount); i++){
+                    let td = document.createElement('td')
+                    tr.appendChild(td)                            
+                }
+                table.appendChild(tr)
+            }    
+            
+            
+            contents.appendChild(table)
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="rCount" value="1">행
+    <input type="text" id="cCount" value="1">열
+    <button onclick="drawTable(); return false;">작성</button>
+
+    <div id="contents"></div>
+    <!-- table, tr, td -->
+
+   
+</body>
+</html>

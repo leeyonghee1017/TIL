@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=야, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function newRegister(){
+            let input = document.getElementById('subject')           
+            let list = document.getElementById('itemList')
+            let item = document.createElement('li')
+            item.textContent = input.value
+            item.setAttribute('onclick','delRow(this)')
+            list.insertBefore(item,list.childNodes[0])
+
+            input.value=''
+
+            /* let items = document.querySelector('li')
+            for(let i = 0; i < items.length;i++){
+                items[i].addEventListener('click',function(){
+                    if(this.parentNode){
+                        this.parentNode.removeChild(this)
+                    }
+                })
+            } */
+        }
+
+        function delRow(ele){
+            let ul = ele.parentNode
+            ul.removeChild(ele)
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Web Programming</h1>
+        <p> 공부할 주제를 기록해 보세요</p>
+        <p> 공부가 끝난 것은 클릭해서 삭제할 수 있습니다.</p>
+        <form action="">
+            <input type="text" id="subject" autofocus>
+            <button onclick="newRegister(); return false;">추가</button>
+        </form>
+        <hr>
+        <ul id="itemList"></ul>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td,
+        tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <script>
+        function tableVal(){
+            let id = document.getElementsByName('id')[0].value
+            let pw = document.getElementsByName('pw')[0].value
+            let addr = document.getElementsByName('addr')[0].value
+            let phone = document.getElementsByName('phone')[0].value
+
+            let tr = document.createElement('tr')
+            for(let i =0; i < 5; i++){
+                let td = document.createElement('td')
+                if(i==0){
+                    td.textContent = id
+                }
+                else if(i==1){
+                    td.textContent = pw
+                }
+                else if(i==2){
+                    td.textContent = addr
+                }
+                else if(i==3){
+                    td.textContent = phone
+                }
+                else{                    
+                    td.textContent = '삭제하기'
+                    td.setAttribute('onclick','del(this.parentNode)')
+                }
+                tr.appendChild(td)
+            }
+
+            let addtr = document.getElementById('addtr')
+            addtr.appendChild(tr)
+        }
+
+        function del(ele){
+            let tr = ele.parentNode
+            /* console.log(tr) */
+            tr.removeChild(ele)
+        }
+
+        function deleteAllRow(){
+            let tbody = document.getElementById('addtr')
+            let length = tbody.children.length
+            for(let i = 0; i<length;i++){
+                tbody.removeChild(tbody.children[0])
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <table id="intable">
+        <tr>
+            <td>아이디:</td>
+            <td><input type="text" name="id"></td>
+        </tr>
+        <tr>
+            <td>비밀번호:</td>
+            <td><input type="text" name="pw"></td>
+        </tr>
+        <tr>
+            <td>주소:</td>
+            <td><input type="text" name="addr"></td>
+        </tr>
+        <tr>
+            <td>전화번호:</td>
+            <td><input type="text" name="phone"></td>
+        </tr>
+    </table>
+    <input type="button" value="추가" onclick="tableVal()">
+    <input type="button" value="전체삭제" onclick="deleteAllRow()">
+
+    <div id="addtable">
+        <table id="ctb">
+            <colgroup>
+                <col width="100px">
+                <col width="100px">
+                <col width="100px">
+                <col width="100px">
+                <col width="100px">
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>비번</th>
+                    <th>주소</th>
+                    <th>전화번호</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="addtr">
+
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+
+</html>
