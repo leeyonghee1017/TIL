@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function inserthref(){
+            location.href="{% url 'insertform' %}"
+        }
+    </script>
+</head>
+<body>
+    <h1>MyBoard test</h1>
+    <table border="1">
+        <col width="50">
+        <col width="100">
+        <col width="500">
+        <col width="150">
+        <tr>
+            <th>번호</th>
+            <th>작성자</th>
+            <th>제목</th>
+            <th>작성일</th>
+        </tr>
+        {% if not myboard_list %}
+            <tr>
+                <th colspan="4">-------작성된 글이 없습니다.------- </th>
+            </tr>
+        {% else %}
+            {% for i in myboard_list %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.myname}}</td>
+                    <td><a href="detail/{{i.id}}">{{i.mytitle}}</a></td>
+                    <td>{{i.mydate}}</td>
+                </tr>
+            {% endfor%}
+        {% endif %}
+        <tr>
+            <td colspan="4" style="text-align: right;">
+                <input type="button" value="글작성" onclick="inserthref()">
+            </td>
+        </tr>
+    </table>
+    <!-- 처음으로 -->
+    <a href="?page=1">처음</a>
+
+    <!-- 이전 -->
+    {% if myboard_list.has_previous %}
+        <a href="?page={{myboard_list.previous_page_number}}">이전</a>
+    {% else %}
+        <a href="">이전</a>
+    {% endif %}
+
+    <!-- 페이지 번호 -->
+    {% for i in myboard_list.paginator.page_range %}
+        {% if myboard_list.number >= i|add:-5 and myboard_list.number <= i|add:+5 %}
+            {% if myboard_list.number == i %}
+                <a>{{i}}</a>
+            {% else %}
+                <a href="?page={{i}}">{{i}}</a>
+            {% endif %}
+        {% endif %}
+    {% endfor%}
+
+    <!-- 다음 -->
+    {% if myboard_list.has_next %}
+        <a href="?page={{myboard_list.next_page_number}}">다음</a>
+    {% else %}
+        <a href="">다음</a>
+    {% endif %}
+    
+    <!-- 끝으로 -->
+    <a href="?page={{myboard_list.paginator.num_pages}}">끝</a>
+</body>
+</html>
