@@ -8,3 +8,11 @@ class MyBoard(models.Model):
 
     # def __str__(self):
     #     return self.mytitle
+
+class MyMember(models.Model):
+    myname = models.CharField(max_length=100)
+    mypassword = models.CharField(max_length=100)
+    myemail = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str({'myname':self.myname,'myemail':self.myemail})

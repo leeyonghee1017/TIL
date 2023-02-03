@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function photo_list(){
+            location.href="{% url 'photo_list' %}"
+        }
+
+        function photo_edit(){
+            location.href="{% url 'photo_edit' pk=photo.id %}"
+        }
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <td><input type="text" name="title" value="{{photo.title}}" readonly></td>
+        </tr>
+        <tr>
+            <th>Autho</th>
+            <td><input type="text" name="autho" value="{{photo.autho}}" readonly></td>
+        </tr>
+        <tr>
+            <th>Image source</th>
+            <td><input type="image" name="image" src="{{photo.image}}"></td>
+        </tr>  
+        <tr>
+            <th>decription</th>
+            <td><input type="text" name="decription" value="{{photo.decription}}" readonly></td>
+        </tr>      
+        <tr>
+            <th>Price</th>
+            <td><input type="text" name="price" value="{{photo.price}}" readonly></td>
+        </tr>            
+        <tr>
+            <td colspan="2" style="text-align: right;">
+                <input type="button" onclick="photo_edit()" value="수정하기">                    
+                <input type="button" onclick="photo_list()" value="메인으로">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

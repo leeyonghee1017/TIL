@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
-from .models import MyBoard
+from .models import MyBoard, MyMember
 
 def index(request):
     myboard_all_search = MyBoard.objects.all().order_by('-id')
@@ -79,3 +79,37 @@ def update_proc(request):
         return redirect('/detail/'+id)
     else:
         return redirect('/updateform/'+id)
+
+def register(request):
+    if request.method == 'GET':
+        return render(request,'register.html') 
+    else :
+        myname = request.POST['myname']
+        mypassword = request.POST['mypassword']
+        myemail = request.POST['myemail']
+
+        result = MyMember.objects.create(myname=myname,mypassword=mypassword,myemail=myemail)
+
+        print(result)
+        if result:
+            return redirect('index')
+        else:
+            return redirect('register')
+
+def login(request):
+    if request.method == 'GET':
+        return render(request,'login.html')
+    else :
+        myname = request.POST['myname']
+        mypassword = request.POST['mypassword']
+        
+        mymember = MyMember.objects.get(myname=myname)
+        if mypassword == mymember.mypassword:
+            request.session['myname'] = mymember.myname
+            return redirect('index')
+        else :
+            return redirect('login')
+
+def logout(request) :
+    del request.session['myname']
+    return redirect('index')

@@ -10,9 +10,28 @@
         function inserthref(){
             location.href="{% url 'insertform' %}"
         }
+
+        function register(){
+            location.href="{% url 'register' %}"
+        }
+
+        function login(){
+            location.href="{% url 'login' %}"
+        }
+
+        function logout(){
+            location.href="{% url 'logout' %}"
+        }
     </script>
 </head>
 <body>
+    {% if request.session.myname %}
+        <input type="button" value="로그아웃" onclick="logout()">  
+    {% else %}
+        <input type="button" value="회원가입" onclick="register()">
+        <input type="button" value="로그인" onclick="login()">
+    {% endif %}
+    
     <h1>MyBoard test</h1>
     <table border="1">
         <col width="50">
