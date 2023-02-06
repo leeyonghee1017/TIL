@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import Photo
 from .form import PhotoForm
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+
 
 # Create your views here.
 def photo_list(request):
@@ -14,17 +17,18 @@ def photo_detail(request, pk):
 
 def photo_post(request):
     if request.method == "GET":
-        return render(request,'photo_post.html')
+        form = PhotoForm()
+        return render(request,'photo_post.html',{'form':form})
     else :
-        title = request.POST['title']
-        autho = request.POST['autho']
-        image = request.POST['image']
-        decription = request.POST['decription']
-        price = request.POST['price']
+        form = PhotoForm(request.POST)
 
-        result = Photo.objects.create(title=title,autho=autho,image=image,decription=decription,price=price)
+        if form.is_valid():
+            photo = form.save(commit=False)
+            photo.save()
 
-        if result:
+            upload_file = request.FILES['imagefile']
+            default_storage.save(upload_file.name,ContentFile(upload_file.read()))
+            Photo.objects.filter(id=photo.id).update(imagefile=upload_file)
             return redirect('photo_list')
         else:
             return redirect('photo_post')
@@ -41,5 +45,13 @@ def photo_edit(request,pk):
             photo=form.save(commit=False)
             photo.save()
             return redirect('photo_detail',pk=photo.id)
+
+def photo_delete(request,pk):
+    result = Photo.objects.filter(pk=pk).delete()
+    if result[0]:
+        return redirect('photo_list')
+    else:
+        return redirect('photo/'+pk)
+
 
     

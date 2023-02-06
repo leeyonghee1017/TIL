@@ -13,37 +13,13 @@
 </head>
 <body>
     <h1>New Photo</h1>
-    <form action="{% url 'photo_post' %}" method="post">
+    <form action="{% url 'photo_post' %}" method="post" enctype="multipart/form-data">
 
         {% csrf_token %}
-        <table border="1">
-            <tr>
-                <th>Title</th>
-                <td><input type="text" name="title" value=""></td>
-            </tr>
-            <tr>
-                <th>Autho</th>
-                <td><input type="text" name="autho" value=""></td>
-            </tr>
-            <tr>
-                <th>Image source</th>
-                <td><input type="text" name="image" value=""></td>
-            </tr>  
-            <tr>
-                <th>decription</th>
-                <td><input type="text" name="decription" value=""></td>
-            </tr>      
-            <tr>
-                <th>Price</th>
-                <td><input type="text" name="price" value=""></td>
-            </tr>            
-            <tr>
-                <td colspan="2" style="text-align: right;">
-                    <input type="submit" value="확인">                    
-                    <input type="button" onclick="photo_list()" value="취소">
-                </td>
-            </tr>
-        </table>
+        {{form.as_p}}
+                
+        <button type="submit">확인</button>                   
+        <button type="button" onclick="photo_list()">취소</button>
     </form>
 </body>
 </html>

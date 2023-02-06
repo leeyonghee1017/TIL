@@ -14,7 +14,8 @@
         {% for i in photos %}
             <div>
                 <h2><a href="{% url 'photo_detail' pk=i.id %}">{{i.title}}</a></h2>
-                <img src="{{i.image}}" alt="{{i.title}}" width="300">
+                <img src="/media/{{i.imagefile}}" alt="{{i.title}}" width="300">
+                <p>{{i.imagefile}}</p>
                 <p>{{i.autho}}, {{i.price}}</p>
             </div>
         {% endfor %}

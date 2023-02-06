@@ -13,6 +13,10 @@
         function photo_edit(){
             location.href="{% url 'photo_edit' pk=photo.id %}"
         }
+
+        function photo_delete(){
+            location.href="{% url 'photo_delete' pk=photo.id %}"
+        }
     </script>
 </head>
 <body>
@@ -39,7 +43,8 @@
         </tr>            
         <tr>
             <td colspan="2" style="text-align: right;">
-                <input type="button" onclick="photo_edit()" value="수정하기">                    
+                <input type="button" onclick="photo_edit()" value="수정하기">   
+                <input type="button" onclick="photo_delete()" value="삭제하기">                 
                 <input type="button" onclick="photo_list()" value="메인으로">
             </td>
         </tr>
