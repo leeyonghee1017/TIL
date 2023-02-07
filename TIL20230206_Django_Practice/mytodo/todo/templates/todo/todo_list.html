@@ -34,16 +34,34 @@
       {% endfor %}
     </ul>
     <!-- 하단 페이지 -->
-    <div class=''>
+    <div class='page-item page'>
     <!-- 처음으로 -->
     <a href="?page=1">처음</a>
     
     <!-- 이전페이지  -->
-
+      {% if todo.has_previous %}
+        <a href="?page={{todo.previous_page_number}}">이전</a>
+      {% else %}
+        이전
+      {% endif %}
+    
     <!-- 페이징 -->
+      {% for i in todo.paginator.page_range %}
+        {% if todo.number == i %}
+          <a>{{i}}</a>
+        {% else %}
+          <a href="?page={{i}}">{{i}}</a>
+        {% endif %}
+      {% endfor %}
+    
     <!-- 다음페이지  -->
+      {% if todo.has_next %}
+        <a href="?page={{todo.next_page_number}}">다음</a>
+      {% else %}
+        다음
+      {% endif %}
     <!-- 끝으로 -->
-    <a href="?page={{todos.paginator.num_pages}}">끝</a> 
+    <a href="?page={{todo.paginator.num_pages}}">끝</a> 
     </div>
   </div>
   </body>

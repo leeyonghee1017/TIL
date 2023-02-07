@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name='todo'
 urlpatterns =[
@@ -10,4 +12,4 @@ urlpatterns =[
     path('done/',views.done_list,name='done_list'),
     path('done/<int:pk>/',views.todo_done,name='todo_done'),
     path('<int:pk>/delete/',views.todo_delete,name='todo_delete'),
-]
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
