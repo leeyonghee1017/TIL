@@ -25,6 +25,7 @@ urlpatterns = [
     # http://127.0.0.1
     path('users/',include('users.urls')),
     # http://127.0.0.1/users/~~
-
+    path('bbs/',include('bbs.urls')),
+    
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
    #js, css, image  정적 파일 관리 (Django가 webserver 역활을 함)
