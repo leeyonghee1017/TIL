@@ -30,4 +30,3 @@ for i in range(N):
 for i in range(len(result)):
     result[i] = result[i].replace('inf','-1')
 
-print(result)
